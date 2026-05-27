@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Cover Scanner</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>📚 Book Cover Scanner</h1>
+      <p class="subtitle">Snap or upload a book cover to find it online</p>
+    </header>
+
+    <main>
+      <!-- Upload / Camera area -->
+      <section class="upload-section">
+        <div class="drop-zone" id="dropZone">
+          <div class="drop-icon">📷</div>
+          <p>Drag &amp; drop a book cover here</p>
+          <p class="or">— or —</p>
+          <div class="btn-row">
+            <label class="btn btn-primary" for="fileInput">
+              Upload Image
+            </label>
+            <button class="btn btn-secondary" id="cameraBtn">Use Camera</button>
+          </div>
+          <input type="file" id="fileInput" accept="image/*" hidden />
+        </div>
+
+        <!-- Camera view (hidden until activated) -->
+        <div class="camera-container" id="cameraContainer" hidden>
+          <video id="cameraVideo" autoplay playsinline></video>
+          <div class="camera-controls">
+            <button class="btn btn-primary" id="captureBtn">📸 Capture</button>
+            <button class="btn btn-secondary" id="closeCameraBtn">Cancel</button>
+          </div>
+          <canvas id="captureCanvas" hidden></canvas>
+        </div>
+
+        <!-- Preview -->
+        <div class="preview-container" id="previewContainer" hidden>
+          <img id="previewImg" src="" alt="Book cover preview" />
+          <div class="btn-row">
+            <button class="btn btn-primary" id="scanBtn">🔍 Scan This Book</button>
+            <button class="btn btn-ghost" id="resetBtn">Try another</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spinner -->
+      <div class="spinner-container" id="spinner" hidden>
+        <div class="spinner"></div>
+        <p>Identifying book…</p>
+      </div>
+
+      <!-- Error -->
+      <div class="error-box" id="errorBox" hidden></div>
+
+      <!-- Results -->
+      <section class="results-section" id="resultsSection" hidden>
+        <div class="identified-banner" id="identifiedBanner"></div>
+        <div class="results-grid" id="resultsGrid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
